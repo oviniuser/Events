@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="nav_all_events">Eventos</string>
+    <string name="nav_subscribed_events">Eventos inscritos</string>
+    <string name="nav_app_login">Login</string>
+    <string name="nav_app_settings">Configurações</string>
+    <string name="nav_app_about">Sobre</string>
+    <string name="txt_user">Usuário</string>
+    <string name="txt_passwd">Senha</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_signup">Cadastrar-se</string>
+    <string name="txt_forgot">Esqueci a senha</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_description">Descrição</string>
+    <string name="txt_ipsum">Mussum Ipsum</string>
+    <string name="txt_speaker">Palestrantes</string>
+    <string name="txt_schedule">Programação</string>
+    <string name="txt_event_name">Nome</string>
+    <string name="txt_date">Data</string>
+    <string name="txt_local">Local</string>
+</resources>
