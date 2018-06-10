@@ -6,22 +6,26 @@
             android:id="@+id/nav_item_all_events"
             android:checkable="true"
             android:icon="@drawable/ic_action_event"
-            android:title="@string/nav_all_events" />
+            android:title="@string/txt_all_events" />
         <item
-            android:id="@+id/nav_item_subscribed_events"
-            android:icon="@drawable/ic_action_new_event"
-            android:title="@string/nav_subscribed_events" />
+            android:id="@+id/nav_item_now_events"
+            android:icon="@drawable/ic_action_go_to_today"
+            android:title="@string/txt_now_events" />
         <item
-            android:id="@+id/nav_item_app_login"
-            android:icon="@drawable/ic_action_accounts"
-            android:title="@string/nav_app_login" />
+            android:id="@+id/nav_item_next_events"
+            android:icon="@drawable/ic_event_note"
+            android:title="@string/txt_next_events" />
         <item
-            android:id="@+id/nav_item_app_settings"
+            android:id="@+id/nav_item_favorites"
+            android:icon="@drawable/ic_action_important"
+            android:title="@string/txt_favorites" />
+        <item
+            android:id="@+id/nav_item_settings"
             android:icon="@drawable/ic_action_settings"
-            android:title="@string/nav_app_settings" />
+            android:title="@string/txt_settings" />
         <item
-            android:id="@+id/nav_item_app_about"
+            android:id="@+id/nav_item_about"
             android:icon="@drawable/ic_action_about"
-            android:title="@string/nav_app_about" />
+            android:title="@string/txt_about" />
     </group>
 </menu>

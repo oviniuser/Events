@@ -3,6 +3,7 @@ package br.com.anibal.events.activity
 import android.os.Bundle
 import br.com.anibal.events.R
 import br.com.anibal.events.domain.Event
+import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
 import kotlinx.android.synthetic.main.activity_event_content.*
@@ -26,7 +27,7 @@ class EventDetailActivity : BaseActivity() {
         textViewEventDate.text = "De " + event.startDate + " a " + event.finishDate
         textViewEventLocal.text = event.latitude + " / " + event.longitude
         textViewSchedule.text = event.talks.toString()
-        val urlImage = "http://192.168.1.6:8000" + event.image
+        val urlImage = Setting.server + event.image
         //vieirateam.pythonanywhere.com
         appBarImage.loadUrl(urlImage)
     }

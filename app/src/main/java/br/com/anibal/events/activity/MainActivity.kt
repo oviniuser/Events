@@ -9,8 +9,11 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import org.jetbrains.anko.startActivity
 import br.com.anibal.events.R
+import br.com.anibal.events.adapter.TabsAdapterMain
 import br.com.anibal.events.domain.MenuItemString
+import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.setupToolBar
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -21,27 +24,30 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setupToolBar(R.id.toolbar)
         setupNavDrawer()
 
-//        if(savedInstanceState == null) {
-//            addFragment(R.id.container, NewsFragment())
-//        }
+        Setting.server = getString(R.string.server)
+
+        setupViewPagerTabs()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_item_all_events -> {
-                startActivity<EventActivity>("menuItem" to MenuItemString.all_events)
-            }
-            R.id.nav_item_subscribed_events -> {
-                startActivity<EventActivity>("menuItem" to MenuItemString.subscribed_events)
-            }
-            R.id.nav_item_app_login -> {
-                startActivity<LoginActivity>()
-            }
-            R.id.nav_item_app_settings -> {
+            R.id.nav_item_favorites -> {
                 toast("Não implementado!")
             }
-            R.id.nav_item_app_about -> {
-                startActivity<SiteAppActivity>()
+            R.id.nav_item_all_events -> {
+                startActivity<EventActivity>("type" to MenuItemString.Events)
+            }
+            R.id.nav_item_now_events -> {
+                toast("Não implementado!")
+            }
+            R.id.nav_item_next_events -> {
+                toast("Não implementado!")
+            }
+            R.id.nav_item_settings -> {
+                toast("Não implementado!")
+            }
+            R.id.nav_item_about -> {
+                toast("Não implementado!")
             }
         }
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
@@ -57,5 +63,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toggle.syncState()
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setupViewPagerTabs() {
+        viewPager.offscreenPageLimit = 2
+        viewPager.adapter = TabsAdapterMain(context, supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
     }
 }

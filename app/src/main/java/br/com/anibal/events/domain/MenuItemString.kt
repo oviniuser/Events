@@ -3,8 +3,10 @@ package br.com.anibal.events.domain
 import br.com.anibal.events.R
 
 enum class MenuItemString(val string: Int) {
-    all_events(R.string.nav_all_events),
-    subscribed_events(R.string.nav_subscribed_events),
-    app_settings(R.string.nav_app_settings),
-    app_login(R.string.nav_app_login)
+    Events(R.string.txt_all_events),
+    NowEvents(R.string.txt_open),
+    NextEvents(R.string.txt_next),
+    Favorites(R.string.txt_favorites),
+    Settings(R.string.txt_settings),
+    About(R.string.txt_about)
 }

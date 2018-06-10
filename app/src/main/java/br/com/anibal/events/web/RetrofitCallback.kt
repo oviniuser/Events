@@ -1,4 +1,4 @@
-package br.com.anibal.events.domain
+package br.com.anibal.events.web
 
 import retrofit2.Call
 import retrofit2.Callback

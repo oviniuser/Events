@@ -13,7 +13,7 @@ class EventActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
-        val menuItem = intent.getSerializableExtra("menuItem") as MenuItemString
+        val menuItem = intent.getSerializableExtra("type") as MenuItemString
         val title = getString(menuItem.string)
         setupToolBar(R.id.toolbar, title, true)
 

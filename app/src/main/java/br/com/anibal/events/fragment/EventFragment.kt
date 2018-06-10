@@ -12,46 +12,47 @@ import br.com.anibal.events.activity.EventDetailActivity
 import br.com.anibal.events.adapter.EventAdapter
 import br.com.anibal.events.domain.Event
 import br.com.anibal.events.domain.MenuItemString
-import br.com.anibal.events.domain.WebClient
+import br.com.anibal.events.web.WebClient
 import br.com.anibal.events.extension.toast
-import kotlinx.android.synthetic.main.fragment_event.*
+import kotlinx.android.synthetic.main.fragment_recycler_view.*
 import org.jetbrains.anko.startActivity
 
 
-class EventFragment : BaseFragment() {
+open class EventFragment : BaseFragment() {
 
-    private var menuItem = MenuItemString.all_events
-    private var events = listOf<Event>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        menuItem = arguments?.getSerializable("menuItem") as MenuItemString
-    }
+    protected var events = listOf<Event>()
+    private val type by lazy { arguments?.getSerializable("type") as MenuItemString }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_event, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_recycler_view, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.setHasFixedSize(true)
     }
 
     override fun onResume() {
         super.onResume()
-        WebClient().list({
+        taskEvent()
+    }
+
+    open fun taskEvent() {
+        WebClient().getEvents({
             this.events = it
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
-        })
-//        configureAdapter()
+        }, type)
     }
 
-    fun configureAdapter() {
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.setHasFixedSize(true)
+    private fun configureAdapter() {
         recyclerView.adapter = EventAdapter(events) { onClickEvent(it) }
     }
 
-    private fun onClickEvent(event: Event) {
+    open fun onClickEvent(event: Event) {
         activity?.startActivity<EventDetailActivity>("event" to event)
     }
 }

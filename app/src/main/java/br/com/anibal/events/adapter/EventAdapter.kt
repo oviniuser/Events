@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.anibal.events.R
 import br.com.anibal.events.domain.Event
+import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import kotlinx.android.synthetic.main.adapter_event.view.*
 
@@ -16,8 +17,7 @@ import kotlinx.android.synthetic.main.adapter_event.view.*
 class EventAdapter(val events: List<Event>,
                    val onClick: (Event) -> Unit) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
-    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    }
+    class EventViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     override fun getItemCount() = this.events.size
 
@@ -32,8 +32,9 @@ class EventAdapter(val events: List<Event>,
 
         with(view) {
             textViewEventName.text = event.name
-            val urlImage = "http://192.168.1.6:8000" + event.image
-//            vieirateam.pythonanywhere.com
+            textViewStartDate.text = event.startDate
+            textViewFinishDate.text = event.finishDate
+            val urlImage = Setting.server + event.image
             imageViewEvent.loadUrl(urlImage, view.progressBar)
             setOnClickListener { onClick(event) }
         }
