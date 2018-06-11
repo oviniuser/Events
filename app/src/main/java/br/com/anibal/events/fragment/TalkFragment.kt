@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.anibal.events.R
+import br.com.anibal.events.activity.TalkDetailActivity
+import br.com.anibal.events.adapter.TalkAdapter
 import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.Talk
 import br.com.anibal.events.extension.toast
@@ -48,11 +50,11 @@ open class TalkFragment : BaseFragment() {
     }
 
     private fun configureAdapter() {
-//        recyclerView.adapter = TalkAdapter(talks) { onClickTalk(it) }
+        recyclerView.adapter = TalkAdapter(talks) { onClickTalk(it) }
     }
 
     open fun onClickTalk(talk: Talk) {
 //        Arguments.
-//        activity?.startActivity<>()
+        activity?.startActivity<TalkDetailActivity>()
     }
 }
