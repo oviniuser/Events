@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import br.com.anibal.events.R
 import br.com.anibal.events.activity.EventDetailActivity
 import br.com.anibal.events.adapter.EventAdapter
+import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.Event
 import br.com.anibal.events.domain.MenuItemString
+import br.com.anibal.events.extension.getBrDate
 import br.com.anibal.events.web.WebClient
 import br.com.anibal.events.extension.toast
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
@@ -42,10 +44,18 @@ open class EventFragment : BaseFragment() {
     open fun taskEvent() {
         WebClient().getEvents({
             this.events = it
+            formatDate(this.events)
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
         }, type)
+    }
+
+    private fun formatDate(events: List<Event>) {
+        for(event in events) {
+            event.startDate = event.startDate.getBrDate()
+            event.finishDate = event.finishDate.getBrDate()
+        }
     }
 
     private fun configureAdapter() {
@@ -53,6 +63,7 @@ open class EventFragment : BaseFragment() {
     }
 
     open fun onClickEvent(event: Event) {
-        activity?.startActivity<EventDetailActivity>("event" to event)
+        Arguments.event = event
+        activity?.startActivity<EventDetailActivity>()
     }
 }

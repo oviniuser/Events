@@ -12,14 +12,14 @@ object Setting {
         return context.getSharedPreferences(PREF_ID, 0)
     }
 
-    fun setUrlServer(value: String) {
+    private fun setUrlServer(value: String) {
         val pref = prefs()
         val editor = pref.edit()
         editor.putString(key, value)
         editor.apply()
     }
 
-    fun getUrlServer(): String {
+    private fun getUrlServer(): String {
         val pref = prefs()
         return pref.getString(this.key, "")
     }

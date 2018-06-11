@@ -34,15 +34,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_item_favorites -> {
                 toast("Não implementado!")
             }
-            R.id.nav_item_all_events -> {
-                startActivity<EventActivity>("type" to MenuItemString.Events)
-            }
-            R.id.nav_item_now_events -> {
-                toast("Não implementado!")
-            }
-            R.id.nav_item_next_events -> {
-                toast("Não implementado!")
-            }
             R.id.nav_item_settings -> {
                 toast("Não implementado!")
             }

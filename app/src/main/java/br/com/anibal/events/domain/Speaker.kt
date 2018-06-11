@@ -11,5 +11,4 @@ data class Speaker(var id: Int = 0,
                    var email: String = "",
                    var formation: String = "",
                    var bio: String = "",
-                   var image: String = "",
-                   var speakers: List<Int>): Serializable
+                   var image: String = ""): Serializable

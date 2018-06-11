@@ -8,7 +8,6 @@ import java.io.Serializable
 
 data class Talk(var id: Int = 0,
                 var event: String = "",
-                var speakers: List<Int>,
                 var name: String = "",
                 var category: String = "",
                 var desc: String = "",

@@ -16,7 +16,7 @@ class TabsAdapterMain(private val context: Context,
     private fun getTabName(position: Int) = when(position) {
         0 -> MenuItemString.NowEvents
         1 -> MenuItemString.NextEvents
-        else -> MenuItemString.Favorites
+        else -> MenuItemString.Events
     }
 
     override fun getPageTitle(position: Int): CharSequence {

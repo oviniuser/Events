@@ -13,5 +13,4 @@ data class Event(var id: Int = 0,
                  var startDate: String = "",
                  var finishDate: String = "",
                  var latitude: String = "",
-                 var longitude: String = "",
-                 var talks: List<Int>): Serializable
+                 var longitude: String = ""): Serializable
