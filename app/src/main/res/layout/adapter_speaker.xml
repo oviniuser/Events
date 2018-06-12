@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:id="@+id/card_view"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    app:cardElevation="3dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="false"
-    card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="6dp">
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:padding="8dp">
 
         <FrameLayout
-            android:id="@+id/frameLayout"
+            android:id="@+id/frameLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -32,25 +25,22 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageViewEvent"
+                android:id="@+id/imageViewSpeaker"
                 android:layout_width="@dimen/image_size"
                 android:layout_height="@dimen/image_size"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="TODO"
                 android:src="@mipmap/ic_launcher" />
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/progressBarSpeaker"
                 style="@android:style/Widget.ProgressBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center"
-                android:gravity="center_vertical|center_horizontal"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:visibility="invisible" />
         </FrameLayout>
 
         <TextView
-            android:id="@+id/textViewEventName"
+            android:id="@+id/textViewSpeakerName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -60,11 +50,11 @@
             android:textSize="@dimen/font_size_title"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/frameLayout"
+            app:layout_constraintStart_toEndOf="@+id/frameLayout2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewStartDate"
+            android:id="@+id/textViewFormation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -73,24 +63,7 @@
             android:text="@string/txt_ipsum"
             android:textSize="@dimen/font_size_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textViewEventName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewEventName" />
-
-        <TextView
-            android:id="@+id/textViewFinishDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/txt_ipsum"
-            android:textSize="@dimen/font_size_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textViewStartDate"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStartDate"
-            app:layout_constraintVertical_bias="0.0" />
-
+            app:layout_constraintStart_toStartOf="@+id/textViewSpeakerName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSpeakerName" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import br.com.anibal.events.domain.MenuItemString
+import br.com.anibal.events.fragment.SpeakerFragment
 import br.com.anibal.events.fragment.TalkDetailFragment
 
 class TabsAdapterTalk(private val context: Context,
@@ -31,7 +32,7 @@ class TabsAdapterTalk(private val context: Context,
                 fragment
             }
             else -> {
-                val fragment = TalkDetailFragment()
+                val fragment = SpeakerFragment()
                 fragment
             }
         }

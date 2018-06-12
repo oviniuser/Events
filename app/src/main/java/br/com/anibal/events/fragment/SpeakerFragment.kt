@@ -8,20 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.anibal.events.R
-import br.com.anibal.events.activity.TalkDetailActivity
-import br.com.anibal.events.adapter.TalkAdapter
-import br.com.anibal.events.domain.Arguments
-import br.com.anibal.events.domain.Arguments.event
-import br.com.anibal.events.domain.Talk
-import br.com.anibal.events.extension.getBrDate
+import br.com.anibal.events.activity.SpeakerDetailActivity
+import br.com.anibal.events.adapter.SpeakerAdapter
+import br.com.anibal.events.domain.Arguments.talk
+import br.com.anibal.events.domain.Speaker
 import br.com.anibal.events.extension.toast
 import br.com.anibal.events.web.WebClient
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
 import org.jetbrains.anko.startActivity
 
-open class TalkFragment : BaseFragment() {
+class SpeakerFragment : BaseFragment() {
 
-    protected var talks = listOf<Talk>()
+    protected var speakers = listOf<Speaker>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,31 +35,24 @@ open class TalkFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        taskTalk()
+        taskSpeaker()
     }
 
-    open fun taskTalk() {
-        WebClient().getTalks({
-            this.talks = it
-            formatDate()
+    open fun taskSpeaker() {
+        WebClient().getSpeakers({
+            this.speakers = it
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
-        }, event.id)
-    }
-
-    private fun formatDate() {
-        for(talk in this.talks) {
-            talk.date = talk.date.getBrDate()
-        }
+        }, talk.id)
     }
 
     private fun configureAdapter() {
-        recyclerView.adapter = TalkAdapter(talks) { onClickTalk(it) }
+        recyclerView.adapter = SpeakerAdapter(speakers) { onClickSpeaker(it) }
     }
 
-    open fun onClickTalk(talk: Talk) {
-        Arguments.talk = talk
-        activity?.startActivity<TalkDetailActivity>()
+    open fun onClickSpeaker(speaker: Speaker) {
+//        Arguments
+        activity?.startActivity<SpeakerDetailActivity>()
     }
 }

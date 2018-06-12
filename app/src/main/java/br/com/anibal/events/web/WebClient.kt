@@ -2,6 +2,7 @@ package br.com.anibal.events.web
 
 import br.com.anibal.events.domain.Event
 import br.com.anibal.events.domain.MenuItemString
+import br.com.anibal.events.domain.Speaker
 import br.com.anibal.events.domain.Talk
 
 class WebClient {
@@ -30,6 +31,21 @@ class WebClient {
                  failure: (throwable: Throwable) -> Unit,
                  eventId: Int) {
         val call = RetrofitInitializer().eventService().getTalks(eventId)
+        call.enqueue(callback({ response ->
+            response?.body()?.let {
+                success(it)
+            }
+        }, { throwable ->
+            throwable?.let {
+                failure(it)
+            }
+        }))
+    }
+
+    fun getSpeakers(success: (speakers: List<Speaker>) -> Unit,
+                    failure: (thorowable: Throwable) -> Unit,
+                    talkId: Int) {
+        val call = RetrofitInitializer().eventService().getSpeakers(talkId)
         call.enqueue(callback({ response ->
             response?.body()?.let {
                 success(it)

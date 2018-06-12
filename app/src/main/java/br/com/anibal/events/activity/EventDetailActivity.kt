@@ -2,8 +2,11 @@ package br.com.anibal.events.activity
 
 import android.os.Bundle
 import br.com.anibal.events.R
+import br.com.anibal.events.R.id.appBarImage
+import br.com.anibal.events.R.id.viewPager
 import br.com.anibal.events.adapter.TabsAdapterEvent
 import br.com.anibal.events.domain.Arguments
+import br.com.anibal.events.domain.Arguments.event
 import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
@@ -11,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 open class EventDetailActivity : BaseActivity() {
 
-    protected val event by lazy { Arguments.event }
+    protected val event = Arguments.event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

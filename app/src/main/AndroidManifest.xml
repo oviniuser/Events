@@ -4,7 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:name=".EventApplication"
@@ -14,11 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/MAPS" />
@@ -38,8 +39,10 @@
         <activity
             android:name=".activity.EventDetailActivity"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.TalkDetailActivity"
-            android:parentActivityName=".activity.EventDetailActivity"/>
+        <activity
+            android:name=".activity.TalkDetailActivity"
+            android:parentActivityName=".activity.EventDetailActivity" />
+        <activity android:name=".activity.SpeakerDetailActivity"></activity>
     </application>
 
 </manifest>
