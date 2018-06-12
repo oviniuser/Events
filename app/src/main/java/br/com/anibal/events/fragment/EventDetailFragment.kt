@@ -8,6 +8,7 @@ import android.view.ViewGroup
 
 import br.com.anibal.events.R
 import br.com.anibal.events.domain.Arguments
+import kotlinx.android.synthetic.main.desc_content.*
 import kotlinx.android.synthetic.main.fragment_event_detail.*
 
 class EventDetailFragment : BaseFragment() {
@@ -24,6 +25,6 @@ class EventDetailFragment : BaseFragment() {
         textViewEventName.text = event.name
         textViewStartDate.text = event.startDate
         textViewFinishDate.text = event.finishDate
-        textViewDescription.text = event.desc
+        textViewDesc.text = event.desc
     }
 }

@@ -9,9 +9,9 @@ import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
 import kotlinx.android.synthetic.main.activity_detail.*
 
-class EventDetailActivity : BaseActivity() {
+open class EventDetailActivity : BaseActivity() {
 
-    private val event by lazy { Arguments.event }
+    protected val event by lazy { Arguments.event }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class EventDetailActivity : BaseActivity() {
         appBarImage.loadUrl(urlImage)
     }
 
-    private fun setupViewPagerTabs() {
+    open fun setupViewPagerTabs() {
         viewPager.offscreenPageLimit = 2
         viewPager.adapter = TabsAdapterEvent(context, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)

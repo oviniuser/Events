@@ -1,12 +1,13 @@
 package br.com.anibal.events.activity
 
-import android.os.Bundle
-import br.com.anibal.events.R
+import br.com.anibal.events.adapter.TabsAdapterTalk
+import kotlinx.android.synthetic.main.activity_detail.*
 
-class TalkDetailActivity : BaseActivity() {
+class TalkDetailActivity : EventDetailActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+    override fun setupViewPagerTabs() {
+        viewPager.offscreenPageLimit = 1
+        viewPager.adapter = TabsAdapterTalk(context, supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
     }
 }

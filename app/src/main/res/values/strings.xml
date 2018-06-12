@@ -14,9 +14,12 @@
     <string name="txt_talks">Programação</string>
     <string name="txt_local">Local</string>
 
+    <string name="txt_speakers">Palestrantes</string>
+
+    <string name="txt_max_people">Vagas</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_description">Descrição</string>
-    <string name="txt_speaker">Palestrantes</string>
     <string name="txt_event_name">Nome</string>
     <string name="txt_date">Data</string>
 

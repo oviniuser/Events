@@ -44,15 +44,15 @@ open class EventFragment : BaseFragment() {
     open fun taskEvent() {
         WebClient().getEvents({
             this.events = it
-            formatDate(this.events)
+            formatDate()
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
         }, type)
     }
 
-    private fun formatDate(events: List<Event>) {
-        for(event in events) {
+    private fun formatDate() {
+        for(event in this.events) {
             event.startDate = event.startDate.getBrDate()
             event.finishDate = event.finishDate.getBrDate()
         }

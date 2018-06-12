@@ -13,6 +13,7 @@ import br.com.anibal.events.activity.TalkDetailActivity
 import br.com.anibal.events.adapter.TalkAdapter
 import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.Talk
+import br.com.anibal.events.extension.getBrDate
 import br.com.anibal.events.extension.toast
 import br.com.anibal.events.web.WebClient
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
@@ -43,10 +44,17 @@ open class TalkFragment : BaseFragment() {
     open fun taskTalk() {
         WebClient().getTalks({
             this.talks = it
+            formatDate()
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
         }, this.event.id)
+    }
+
+    private fun formatDate() {
+        for(talk in this.talks) {
+            talk.date = talk.date.getBrDate()
+        }
     }
 
     private fun configureAdapter() {
@@ -54,7 +62,7 @@ open class TalkFragment : BaseFragment() {
     }
 
     open fun onClickTalk(talk: Talk) {
-//        Arguments.
+        Arguments.talk = talk
         activity?.startActivity<TalkDetailActivity>()
     }
 }
