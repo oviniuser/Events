@@ -9,7 +9,8 @@ enum class MenuItemString(val string: Int) {
     Favorites(R.string.txt_favorites),
     Settings(R.string.txt_settings),
     About(R.string.txt_about),
-    Talks(R.string.txt_talks),
+    Schedule(R.string.txt_schedule),
     Local(R.string.txt_local),
-    Speakers(R.string.txt_speakers)
+    Speakers(R.string.txt_speakers),
+    Talks(R.string.txt_talks)
 }

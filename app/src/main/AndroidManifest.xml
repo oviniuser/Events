@@ -42,7 +42,8 @@
         <activity
             android:name=".activity.TalkDetailActivity"
             android:parentActivityName=".activity.EventDetailActivity" />
-        <activity android:name=".activity.SpeakerDetailActivity"></activity>
+        <activity android:name=".activity.SpeakerDetailActivity"
+            android:parentActivityName=".activity.TalkDetailActivity"/>
     </application>
 
 </manifest>

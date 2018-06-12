@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import br.com.anibal.events.R
 import br.com.anibal.events.activity.SpeakerDetailActivity
 import br.com.anibal.events.adapter.SpeakerAdapter
+import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.Arguments.talk
 import br.com.anibal.events.domain.Speaker
 import br.com.anibal.events.extension.toast
@@ -52,7 +53,7 @@ class SpeakerFragment : BaseFragment() {
     }
 
     open fun onClickSpeaker(speaker: Speaker) {
-//        Arguments
+        Arguments.speaker = speaker
         activity?.startActivity<SpeakerDetailActivity>()
     }
 }

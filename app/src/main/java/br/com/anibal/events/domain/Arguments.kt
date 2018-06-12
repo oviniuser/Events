@@ -7,6 +7,7 @@ object Arguments {
     private val bundle = Bundle()
     private const val key_event = "event"
     private const val key_talk = "talk"
+    private const val key_speaker = "speaker"
 
     private fun putEvent(event: Event) {
         bundle.remove(key_event)
@@ -26,6 +27,15 @@ object Arguments {
         return bundle.getSerializable(key_talk) as Talk
     }
 
+    private fun putSpeaker(speaker: Speaker) {
+        bundle.remove(key_speaker)
+        bundle.putSerializable(key_speaker, speaker)
+    }
+
+    private fun findSpeaker(): Speaker {
+        return bundle.getSerializable(key_speaker) as Speaker
+    }
+
     var event: Event
         get() = findEvent()
         set(value) = putEvent(value)
@@ -33,4 +43,8 @@ object Arguments {
     var talk: Talk
         get() = findTalk()
         set(value) = putTalk(value)
+
+    var speaker: Speaker
+        get() = findSpeaker()
+        set(value) = putSpeaker(value)
 }
