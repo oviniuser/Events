@@ -29,8 +29,13 @@ class WebClient {
 
     fun getTalks(success: (talks: List<Talk>) -> Unit,
                  failure: (throwable: Throwable) -> Unit,
-                 eventId: Int) {
-        val call = RetrofitInitializer().eventService().getTalks(eventId)
+                 id: Int,
+                 type: MenuItemString) {
+        val call = when(type) {
+            MenuItemString.Talks -> RetrofitInitializer().eventService().getTalksSpeaker(id)
+            else ->  RetrofitInitializer().eventService().getTalks(id)
+        }
+
         call.enqueue(callback({ response ->
             response?.body()?.let {
                 success(it)
@@ -43,7 +48,7 @@ class WebClient {
     }
 
     fun getSpeakers(success: (speakers: List<Speaker>) -> Unit,
-                    failure: (thorowable: Throwable) -> Unit,
+                    failure: (throwable: Throwable) -> Unit,
                     talkId: Int) {
         val call = RetrofitInitializer().eventService().getSpeakers(talkId)
         call.enqueue(callback({ response ->

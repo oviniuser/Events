@@ -4,8 +4,11 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import br.com.anibal.events.domain.Arguments
+import br.com.anibal.events.domain.Arguments.speaker
 import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.fragment.SpeakerDetailFragment
+import br.com.anibal.events.fragment.TalkFragment
 
 class TabsAdapterSpeaker(private val context: Context,
                          fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager) {
@@ -30,7 +33,9 @@ class TabsAdapterSpeaker(private val context: Context,
                 fragment
             }
             else -> {
-                val fragment = SpeakerDetailFragment()
+                val fragment = TalkFragment()
+                Arguments.type = type
+                Arguments.putInt(type.toString(), speaker.id)
                 fragment
             }
         }

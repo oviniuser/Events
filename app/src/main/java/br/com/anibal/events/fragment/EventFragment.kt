@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.anibal.events.R
+import br.com.anibal.events.R.id.recyclerView
 import br.com.anibal.events.activity.EventDetailActivity
 import br.com.anibal.events.adapter.EventAdapter
 import br.com.anibal.events.domain.Arguments

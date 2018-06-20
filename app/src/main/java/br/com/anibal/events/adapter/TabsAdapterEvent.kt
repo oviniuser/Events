@@ -4,6 +4,8 @@ import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import br.com.anibal.events.domain.Arguments
+import br.com.anibal.events.domain.Arguments.event
 import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.fragment.EventDetailFragment
 import br.com.anibal.events.fragment.EventLocalFragment
@@ -35,6 +37,8 @@ class TabsAdapterEvent(private val context: Context,
             }
             MenuItemString.Schedule -> {
                 val fragment = TalkFragment()
+                Arguments.type = type
+                Arguments.putInt(type.toString(), event.id)
                 fragment
             }
             else -> {

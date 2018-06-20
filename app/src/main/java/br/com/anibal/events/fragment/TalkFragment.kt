@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.anibal.events.R
+import br.com.anibal.events.R.id.recyclerView
 import br.com.anibal.events.activity.TalkDetailActivity
 import br.com.anibal.events.adapter.TalkAdapter
 import br.com.anibal.events.domain.Arguments
-import br.com.anibal.events.domain.Arguments.event
+import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.domain.Talk
 import br.com.anibal.events.extension.getBrDate
 import br.com.anibal.events.extension.toast
@@ -41,13 +42,16 @@ open class TalkFragment : BaseFragment() {
     }
 
     open fun taskTalk() {
+        val id = Arguments.type
+
         WebClient().getTalks({
             this.talks = it
             formatDate()
             configureAdapter()
         }, {
             toast("Falha ao carregar lista.")
-        }, event.id)
+        }, Arguments.findInt(id.toString()),
+        id)
     }
 
     private fun formatDate() {

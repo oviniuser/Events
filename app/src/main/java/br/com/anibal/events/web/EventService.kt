@@ -25,6 +25,9 @@ interface EventService {
     @GET("events/{id}/talks")
     fun getTalks(@Path("id") id: Int): Call<List<Talk>>
 
+    @GET("speakers/{id}/talks")
+    fun getTalksSpeaker(@Path("id") id: Int): Call<List<Talk>>
+
     @GET("talks/{id}/speakers")
     fun getSpeakers(@Path("id") id: Int): Call<List<Speaker>>
 }

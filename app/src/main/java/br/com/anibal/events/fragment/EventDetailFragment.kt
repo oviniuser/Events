@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import br.com.anibal.events.R
+import br.com.anibal.events.R.id.*
 import br.com.anibal.events.domain.Arguments
 import kotlinx.android.synthetic.main.desc_content.*
 import kotlinx.android.synthetic.main.fragment_event_detail.*
