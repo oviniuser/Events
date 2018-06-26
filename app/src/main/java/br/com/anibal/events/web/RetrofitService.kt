@@ -11,7 +11,7 @@ import retrofit2.http.Path
  * Created by user on 21/03/18.
  */
 
-interface EventService {
+interface RetrofitService {
 
     @GET("events")
     fun getEvents(): Call<List<Event>>

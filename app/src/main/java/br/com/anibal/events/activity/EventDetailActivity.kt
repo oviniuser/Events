@@ -5,7 +5,7 @@ import android.support.v4.content.ContextCompat
 import br.com.anibal.events.R
 import br.com.anibal.events.adapter.TabsAdapterEvent
 import br.com.anibal.events.domain.Arguments
-import br.com.anibal.events.database.DatabaseService
+import br.com.anibal.events.database.EventDatabaseService
 import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
@@ -26,7 +26,6 @@ open class EventDetailActivity : BaseActivity() {
         initViews()
         setupViewPagerTabs()
         setupFAB()
-        fab.setOnClickListener { onClickFab() }
     }
 
     private fun initViews() {
@@ -40,9 +39,10 @@ open class EventDetailActivity : BaseActivity() {
         tabLayout.setupWithViewPager(viewPager)
     }
 
-    private fun setupFAB() {
+    open fun setupFAB() {
+        fab.setOnClickListener { onClickFab() }
         doAsync {
-            val favorite = DatabaseService.isFavorite(event)
+            val favorite = EventDatabaseService.isFavorite(event)
             uiThread {
                 if(favorite)
                     fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_action_important))
@@ -52,7 +52,7 @@ open class EventDetailActivity : BaseActivity() {
 
     private fun onClickFab() {
         doAsync {
-            val favorite = DatabaseService.setFavorite(event)
+            val favorite = EventDatabaseService.setFavorite(event)
 
             uiThread {
                 if(favorite) {

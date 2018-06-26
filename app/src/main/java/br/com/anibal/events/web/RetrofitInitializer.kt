@@ -11,5 +11,5 @@ class RetrofitInitializer {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-    fun eventService(): EventService = retrofit.create(EventService::class.java)
+    fun eventService(): RetrofitService = retrofit.create(RetrofitService::class.java)
 }

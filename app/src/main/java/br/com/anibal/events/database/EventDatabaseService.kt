@@ -6,19 +6,19 @@ import br.com.anibal.events.domain.Event
 /**
  * @author user
  */
-object DatabaseService {
+object EventDatabaseService {
     fun getFavoriteEvents(): List<Event> {
-        val dao = DatabaseManager.getEventDAO()
+        val dao = EventDatabaseManager.getEventDAO()
         return dao.getFavoriteEvents()
     }
 
     fun getEvents(): List<Event> {
-        val dao = DatabaseManager.getEventDAO()
+        val dao = EventDatabaseManager.getEventDAO()
         return dao.getEvents()
     }
 
     fun setFavorite(event: Event): Boolean {
-        val dao = DatabaseManager.getEventDAO()
+        val dao = EventDatabaseManager.getEventDAO()
 
         event.favorite = !event.favorite
 
@@ -27,21 +27,21 @@ object DatabaseService {
     }
 
     fun isFavorite(event: Event): Boolean {
-        val dao = DatabaseManager.getEventDAO()
+        val dao = EventDatabaseManager.getEventDAO()
         return dao.getFavoriteEventById(event.id) != null
     }
 
-    fun isSaved(event: Event): Boolean {
-        val dao = DatabaseManager.getEventDAO()
+    private fun isSaved(event: Event): Boolean {
+        val dao = EventDatabaseManager.getEventDAO()
         return dao.getEventById(event.id) != null
     }
 
     fun saveEvents(events: List<Event>) {
-        val dao = DatabaseManager.getEventDAO()
+        val dao = EventDatabaseManager.getEventDAO()
 
         for (event in events) {
             val insert = isSaved(event)
-            if(!insert)
+            if (!insert)
                 dao.insertEvent(event)
         }
     }

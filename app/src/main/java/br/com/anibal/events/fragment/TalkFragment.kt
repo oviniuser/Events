@@ -11,6 +11,7 @@ import br.com.anibal.events.R
 import br.com.anibal.events.R.id.recyclerView
 import br.com.anibal.events.activity.TalkDetailActivity
 import br.com.anibal.events.adapter.TalkAdapter
+import br.com.anibal.events.database.TalkDatabaseService
 import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.domain.Talk
@@ -18,7 +19,9 @@ import br.com.anibal.events.extension.getBrDate
 import br.com.anibal.events.extension.toast
 import br.com.anibal.events.web.WebClient
 import kotlinx.android.synthetic.main.fragment_recycler_view.*
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.uiThread
 
 open class TalkFragment : BaseFragment() {
 
@@ -47,16 +50,34 @@ open class TalkFragment : BaseFragment() {
         WebClient().getTalks({
             this.talks = it
             formatDate()
+            saveTalks()
             configureAdapter()
         }, {
-            toast("Falha ao carregar lista.")
+            toast(getString(R.string.txt_not_connected))
+            loadSavedTalks()
         }, Arguments.findInt(id.toString()),
         id)
+    }
+
+    private fun loadSavedTalks() {
+        doAsync {
+            talks = TalkDatabaseService.getEventTalks()
+
+            uiThread {
+                configureAdapter()
+            }
+        }
     }
 
     private fun formatDate() {
         for(talk in this.talks) {
             talk.date = talk.date.getBrDate()
+        }
+    }
+
+    private fun saveTalks() {
+        doAsync {
+            TalkDatabaseService.saveTalks(talks)
         }
     }
 

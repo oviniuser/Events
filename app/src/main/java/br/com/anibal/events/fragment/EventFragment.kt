@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import br.com.anibal.events.R
 import br.com.anibal.events.activity.EventDetailActivity
 import br.com.anibal.events.adapter.EventAdapter
-import br.com.anibal.events.database.DatabaseService
+import br.com.anibal.events.database.EventDatabaseService
 import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.Event
 import br.com.anibal.events.domain.MenuItemString
@@ -64,7 +64,7 @@ open class EventFragment : BaseFragment() {
 
     private fun loadSavedEvents() {
         doAsync {
-            events = DatabaseService.getEvents()
+            events = EventDatabaseService.getEvents()
 
             uiThread {
                 configureAdapter()
@@ -81,7 +81,7 @@ open class EventFragment : BaseFragment() {
 
     private fun saveEvents() {
         doAsync {
-            DatabaseService.saveEvents(events)
+            EventDatabaseService.saveEvents(events)
         }
     }
 

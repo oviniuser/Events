@@ -5,6 +5,6 @@ import android.arch.persistence.room.RoomDatabase
 import br.com.anibal.events.domain.Event
 
 @Database(entities = [(Event::class)], version = 1)
-abstract class Database: RoomDatabase() {
+abstract class EventDatabase: RoomDatabase() {
     abstract fun eventDAO(): EventDAO
 }
