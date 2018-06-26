@@ -15,9 +15,15 @@
     <string name="txt_max_people">Vagas</string>
     <string name="txt_talks">Palestras</string>
 
+    <!-- Messages -->
+    <string name="txt_important">Adicionado aos favoritos</string>
+    <string name="txt_not_important">Removido dos favoritos</string>
+    <string name="txt_not_connected">Sem conexão</string>
+
     <!-- Server -->
     <string name="server">http://vieirateam.pythonanywhere.com</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Project -->
+    <string name="github">https://github.com/vieirateam/event</string>
+    <string name="email">vieirateam.contact@gmail.com</string>
 </resources>
