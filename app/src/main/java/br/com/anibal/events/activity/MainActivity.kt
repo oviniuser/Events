@@ -39,7 +39,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 toast("Não implementado!")
             }
             R.id.nav_item_about -> {
-                toast("Não implementado!")
+                startActivity<AboutActivity>()
             }
         }
         val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
