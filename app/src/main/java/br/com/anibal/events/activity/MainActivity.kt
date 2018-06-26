@@ -32,7 +32,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_item_favorites -> {
-                toast("Não implementado!")
+                startActivity<FavoriteActivity>()
             }
             R.id.nav_item_settings -> {
                 toast("Não implementado!")

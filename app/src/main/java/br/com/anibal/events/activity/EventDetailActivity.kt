@@ -1,16 +1,20 @@
 package br.com.anibal.events.activity
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.util.Log
 import br.com.anibal.events.R
-import br.com.anibal.events.R.id.appBarImage
-import br.com.anibal.events.R.id.viewPager
+import br.com.anibal.events.R.id.*
 import br.com.anibal.events.adapter.TabsAdapterEvent
 import br.com.anibal.events.domain.Arguments
-import br.com.anibal.events.domain.Arguments.event
+import br.com.anibal.events.domain.FavoriteService
 import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
 import kotlinx.android.synthetic.main.activity_detail.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
+import org.jetbrains.anko.uiThread
 
 open class EventDetailActivity : BaseActivity() {
 
@@ -23,6 +27,8 @@ open class EventDetailActivity : BaseActivity() {
         setupToolBar(R.id.toolbar, event.name, true)
         initViews()
         setupViewPagerTabs()
+        setupFAB()
+        fab.setOnClickListener { onClickFab() }
     }
 
     private fun initViews() {
@@ -34,5 +40,31 @@ open class EventDetailActivity : BaseActivity() {
         viewPager.offscreenPageLimit = 2
         viewPager.adapter = TabsAdapterEvent(context, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
+    }
+
+    private fun setupFAB() {
+        doAsync {
+            val favorite = FavoriteService.isFavorite(event)
+            uiThread {
+                if(favorite)
+                    fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_action_important))
+            }
+        }
+    }
+
+    private fun onClickFab() {
+        doAsync {
+            val favorite = FavoriteService.setFavorite(event)
+
+            uiThread {
+                if(favorite) {
+                    toast(getString(R.string.txt_important))
+                    fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_action_important))
+                } else {
+                    toast(getString(R.string.txt_not_important))
+                    fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_action_not_important))
+                }
+            }
+        }
     }
 }
