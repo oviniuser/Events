@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import br.com.anibal.events.domain.Arguments
 import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.fragment.EventFragment
 

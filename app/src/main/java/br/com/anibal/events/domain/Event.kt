@@ -6,21 +6,23 @@ import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 /**
- * Created by user on 21/03/18.
+ * @author user
  */
-@Entity(tableName="event")
+@Entity(tableName = "event")
 data class Event(@PrimaryKey var id: Int = 0,
-                 @ColumnInfo(name="name")
+                 @ColumnInfo(name = "name")
                  var name: String = "",
-                 @ColumnInfo(name="description")
+                 @ColumnInfo(name = "description")
                  var desc: String = "",
-                 @ColumnInfo(name="image")
+                 @ColumnInfo(name = "image")
                  var image: String = "",
-                 @ColumnInfo(name="start_date")
+                 @ColumnInfo(name = "start_date")
                  var startDate: String = "",
-                 @ColumnInfo(name="finish_date")
+                 @ColumnInfo(name = "finish_date")
                  var finishDate: String = "",
-                 @ColumnInfo(name="latitude")
+                 @ColumnInfo(name = "latitude")
                  var latitude: String = "",
-                 @ColumnInfo(name="longitude")
-                 var longitude: String = ""): Serializable
+                 @ColumnInfo(name = "longitude")
+                 var longitude: String = "",
+                 @ColumnInfo(name = "favorite")
+                 var favorite: Boolean) : Serializable

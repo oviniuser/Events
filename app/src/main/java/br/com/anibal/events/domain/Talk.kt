@@ -1,18 +1,32 @@
 package br.com.anibal.events.domain
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 /**
- * Created by user on 06/05/18.
+ * @author user
  */
-
-data class Talk(var id: Int = 0,
-                var event: String = "",
+@Entity(tableName = "talk")
+data class Talk(@PrimaryKey var id: Int = 0,
+                @ColumnInfo(name = "event_id")
+                var event: Int = 0,
+                @ColumnInfo(name = "name")
                 var name: String = "",
+                @ColumnInfo(name = "category")
                 var category: String = "",
+                @ColumnInfo(name = "description")
                 var desc: String = "",
+                @ColumnInfo(name = "max_people")
                 var maxPeople: Int = 0,
+                @ColumnInfo(name = "date")
                 var date: String = "",
+                @ColumnInfo(name = "start_time")
                 var startTime: String = "",
+                @ColumnInfo(name = "finish_time")
                 var finishTime: String = "",
-                var location: String = ""): Serializable
+                @ColumnInfo(name = "location")
+                var location: String = "",
+                @ColumnInfo(name = "favorite")
+                var favorite: Boolean) : Serializable

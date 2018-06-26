@@ -1,6 +1,7 @@
 package br.com.anibal.events.activity
 
 import android.os.Bundle
+import android.util.Log
 import br.com.anibal.events.R
 import br.com.anibal.events.domain.MenuItemString
 import br.com.anibal.events.extension.addFragment
@@ -16,7 +17,7 @@ class FavoriteActivity : BaseActivity() {
         val title = getString(MenuItemString.Favorites.string)
         setupToolBar(R.id.toolbar, title, true)
 
-        if(savedInstanceState != null) {
+        if(savedInstanceState == null) {
             addFragment(R.id.container, FavoriteFragment())
         }
     }

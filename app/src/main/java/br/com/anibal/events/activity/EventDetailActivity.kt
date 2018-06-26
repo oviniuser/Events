@@ -2,12 +2,10 @@ package br.com.anibal.events.activity
 
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import br.com.anibal.events.R
-import br.com.anibal.events.R.id.*
 import br.com.anibal.events.adapter.TabsAdapterEvent
 import br.com.anibal.events.domain.Arguments
-import br.com.anibal.events.domain.FavoriteService
+import br.com.anibal.events.database.DatabaseService
 import br.com.anibal.events.domain.Setting
 import br.com.anibal.events.extension.loadUrl
 import br.com.anibal.events.extension.setupToolBar
@@ -44,7 +42,7 @@ open class EventDetailActivity : BaseActivity() {
 
     private fun setupFAB() {
         doAsync {
-            val favorite = FavoriteService.isFavorite(event)
+            val favorite = DatabaseService.isFavorite(event)
             uiThread {
                 if(favorite)
                     fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_action_important))
@@ -54,7 +52,7 @@ open class EventDetailActivity : BaseActivity() {
 
     private fun onClickFab() {
         doAsync {
-            val favorite = FavoriteService.setFavorite(event)
+            val favorite = DatabaseService.setFavorite(event)
 
             uiThread {
                 if(favorite) {

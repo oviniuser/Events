@@ -3,6 +3,9 @@ package br.com.anibal.events.domain
 import android.content.SharedPreferences
 import br.com.anibal.events.EventApplication
 
+/**
+ * @author user
+ */
 object Setting {
     private const val key = "key"
     private const val PREF_ID = "events"

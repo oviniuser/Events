@@ -2,6 +2,9 @@ package br.com.anibal.events.domain
 
 import br.com.anibal.events.R
 
+/**
+ * @author user
+ */
 enum class MenuItemString(val string: Int) {
     Events(R.string.txt_all),
     NowEvents(R.string.txt_open),

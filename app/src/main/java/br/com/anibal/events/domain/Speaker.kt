@@ -1,14 +1,24 @@
 package br.com.anibal.events.domain
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import java.io.Serializable
 
 /**
- * Created by user on 06/05/18.
+ * @author user
  */
-
-data class Speaker(var id: Int = 0,
+@Entity(tableName = "speaker")
+data class Speaker(@PrimaryKey var id: Int = 0,
+                   @ColumnInfo(name = "name")
                    var name: String = "",
+                   @ColumnInfo(name = "email")
                    var email: String = "",
+                   @ColumnInfo(name = "formation")
                    var formation: String = "",
+                   @ColumnInfo(name = "bio")
                    var bio: String = "",
-                   var image: String = ""): Serializable
+                   @ColumnInfo(name = "image")
+                   var image: String = "",
+                   @ColumnInfo(name = "favorite")
+                   var favorite: Boolean) : Serializable
